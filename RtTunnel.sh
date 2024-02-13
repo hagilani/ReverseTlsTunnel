@@ -116,7 +116,7 @@ configure_arguments() {
     if [ "$server_choice" == "2" ]; then
         read -p "Please Enter IRAN IP(internal-server) : " server_ip
         read -p "Please Enter Password (Please choose the same password on both servers): " password
-        arguments="--kharej --iran-ip:$server_ip --iran-port:443 --toip:127.0.0.1 --toport:multiport --password:$password --sni:$sni --terminate:24"
+        arguments="--kharej --iran-ip:$server_ip --iran-port:21 --toip:127.0.0.1 --toport:multiport --password:$password --sni:$sni --terminate:24"
     elif [ "$server_choice" == "1" ]; then
         read -p "Please Enter Password (Please choose the same password on both servers): " password
         read -p "Do you want to use fake upload? (yes/no): " use_fake_upload
@@ -185,10 +185,10 @@ configure_arguments2() {
         read -p "Please Enter Password (Please choose the same password on both servers): " password
 
         if [ "$is_main_server" == "yes" ]; then
-            arguments="--kharej --iran-ip:$server_ip --iran-port:443 --toip:127.0.0.1 --toport:multiport --password:$password --sni:$sni --terminate:24"
+            arguments="--kharej --iran-ip:$server_ip --iran-port:21 --toip:127.0.0.1 --toport:multiport --password:$password --sni:$sni --terminate:24"
         elif [ "$is_main_server" == "no" ]; then
             read -p "Enter your main IP (VPN Server):  " main_ip
-            arguments="--kharej --iran-ip:$server_ip --iran-port:443 --toip:$main_ip --toport:multiport --password:$password --sni:$sni --terminate:24"
+            arguments="--kharej --iran-ip:$server_ip --iran-port:21 --toip:$main_ip --toport:multiport --password:$password --sni:$sni --terminate:24"
         else
             echo "Invalid choice for main server. Please enter 'yes' or 'no'."
             exit 1
@@ -527,7 +527,7 @@ install_custom() {
     check_c_installed
     install_selected_version
     cd /etc/systemd/system
-    read -p "Enter RTT arguments (Example: RTT --iran --lport:443 --sni:splus.ir --password:123): " arguments
+    read -p "Enter RTT arguments (Example: RTT --iran --lport:21 --sni:splus.ir --password:123): " arguments
     
     # Create the custom_tunnel.service file with user input
     cat <<EOL > custom_tunnel.service
